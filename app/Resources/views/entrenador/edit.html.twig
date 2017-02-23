@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(edit_form) }}
+
+    <div class="container">
+
+      <div class="col-md-4 col-md-offset-4">
+        <div class="text-center">
+          <p>
+            <h1>Editar Entrenador</h1>
+          </p>
+        </div>
+        <div>
+          <p>
+            {{ form_errors(edit_form.nombre) }}
+            {{ form_widget(edit_form.nombre, {'attr': {'class': 'form-control','placeholder': 'Nombre'}}) }}
+          </p>
+        </div>
+        <div>
+          <P>
+            {{ form_errors(edit_form.apellidos) }}
+            {{ form_widget(edit_form.apellidos, {'attr': {'class': 'form-control','placeholder': 'Apellidos'}}) }}
+          </p>
+        </div>
+        <div>
+          <P>
+            {{ form_errors(edit_form.titulaciones) }}
+            {{ form_widget(edit_form.titulaciones, {'attr': {'class': 'form-control','placeholder': 'Titulaciones'}}) }}
+          </p>
+        </div>
+
+        <div>
+          <P>
+            {{ form_errors(edit_form.telefono) }}
+            {{ form_widget(edit_form.telefono, {'attr': {'class': 'form-control','placeholder': 'Telefono'}}) }}
+          </p>
+        </div>
+
+        <div>
+          <P>
+            {{ form_errors(edit_form.equipo) }}
+            {{ form_widget(edit_form.equipo, {'attr': {'class': 'form-control'}}) }}
+          </p>
+        </div>
+
+        <P>
+        <div class="container">
+          <div class="row">
+            <div id="margenbot">
+            <div class="editarboton">
+            <input class="btn btn-success" type="submit" value="Editar" />
+            {{ form_end(edit_form) }}
+            </div>
+
+            <div class="eliminarboton">
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger"type="submit" value="Eliminar">
+            </div>
+
+            {{ form_end(delete_form) }}
+            <div class="volverboton">
+            <a href="{{ path('entrenador_index') }}"><input class="btn btn-default" type="button" value="Volver" /></a>
+          </div>
+            </div>
+        </div>
+      </div>
+    </p>
+    </div>
+
+
+{% endblock %}

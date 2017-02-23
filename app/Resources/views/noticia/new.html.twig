@@ -1,0 +1,67 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+
+{{ form_start(form) }}
+
+<div class="container">
+
+  <div class="col-md-4 col-md-offset-4">
+    <div class="text-center">
+      <p>
+        <h1>Crear Noticia</h1>
+      </p>
+    </div>
+    <div>
+      <p>
+        {{ form_errors(form.fecha) }}
+        {{ form_widget(form.fecha, {'attr': {'class': 'form-control'}}) }}
+      </p>
+    </div>
+    <div>
+      <P>
+        {{ form_errors(form.titulo) }}
+        {{ form_widget(form.titulo, {'attr': {'class': 'form-control','placeholder': 'Titulo'}}) }}
+      </p>
+    </div>
+    <div>
+      <P>
+        {{ form_errors(form.subtitulo) }}
+        {{ form_widget(form.subtitulo, {'attr': {'class': 'form-control','placeholder': 'Subtitulo'}}) }}
+      </p>
+    </div>
+
+    <div>
+      <P>
+        {{ form_errors(form.descripcion) }}
+        {{ form_widget(form.descripcion, {'attr': {'class': 'form-control','placeholder': 'Descripcion'}}) }}
+      </p>
+    </div>
+
+    <div>
+      <p>
+        {{ form_errors(form.imagen) }}
+        {{ form_widget(form.imagen, {'attr': {'class': 'form-control','placeholder': 'URL de la imagen'}}) }}
+      </p>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div id="margenbot">
+      <div class="editarboton">
+        <input class="btn btn-success" type="submit" value="Crear" />
+      </div>
+
+        <div class="volverboton">
+        <a href="{{ url('noticia_index') }}"><input class="btn btn-default" type="button" value="Volver" /></a>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
+
+      {{ form_end(form) }}
+
+
+      {% endblock %}

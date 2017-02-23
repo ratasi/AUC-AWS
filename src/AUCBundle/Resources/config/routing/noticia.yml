@@ -1,0 +1,24 @@
+noticia_index:
+    path:     /
+    defaults: { _controller: "AUCBundle:Noticia:index" }
+    methods:  GET
+
+noticia_show:
+    path:     /{id}/show
+    defaults: { _controller: "AUCBundle:Noticia:show" }
+    methods:  GET
+
+noticia_new:
+    path:     /new
+    defaults: { _controller: "AUCBundle:Noticia:new" }
+    methods:  [GET, POST]
+
+noticia_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AUCBundle:Noticia:edit" }
+    methods:  [GET, POST]
+
+noticia_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AUCBundle:Noticia:delete" }
+    methods:  [GET, POST, DELETE]

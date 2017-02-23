@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}AUC{% endblock %}</title>
+    <link rel="shortcut icon" href="{{ asset('/images/logo.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <!-- Superfish -->
+    <link rel="stylesheet" href="{{ asset('css/superfish.css') }}">
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
+    <!-- CS Select -->
+    <link rel="stylesheet" href="{{ asset('css/select.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+
+    <!-- Modernizr JS -->
+    <script src="{{ asset('js/modernizr-2.6.2.min.js') }}"></script>
+
+
+
+    <!-- Prueba jquery -->
+    <script type="text/javascript" src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
+
+    <!-- Header Menú -->
+</head>
+<body>
+    <div id="fh5co-wrapper">
+        <div id="fh5co-page">
+
+            <header id="fh5co-header-section" class="sticky-banner">
+            <div class="container">
+                <div class="nav-header">
+                    <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
+                    <h1 id="fh5co-logo"><a href="{{ url('auc_homepage') }}"><img src="{{ asset('/images/logo.png') }}" class="logo"></i>Athletic Unión Catarroja </a></h1>
+                    <!-- Empieza el menú -->
+                    <nav id="fh5co-menu-wrap" role="navigation">
+                        <ul class="sf-menu" id="fh5co-primary-menu">
+                            <li>
+                                <a href="#" class="fh5co-sub-ddown">Fútbol</a>
+                                <ul class="fh5co-sub-menu">
+                                    <li><a href="{{ url('auc_futbol_convencional') }}">Fútbol convencional</a></li>
+                                    <li><a href="{{ url('auc_adaptado') }}">Fútbol adaptado</a></li>
+                                    <li><a href="{{ url('auc_futbol_silla') }}">Fútbol silla de ruedas</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{{ url('auc_extra') }}">Actividades extra</a>
+                            </li>
+                            <li><a href="{{ url('auc_quienes') }}">Nosotros</a></li>
+                            <li><a href="{{ url('auc_contacto') }}">Contacto</a></li>
+                            {% if is_granted("ROLE_ADMIN") %}
+                            <li>
+                                <a href="#" class="fh5co-sub-ddown">Acciones</a>
+                                <ul class="fh5co-sub-menu">
+                                    <li><a href="{{ url('auc_register_admin') }}">Crear administrador</a></li>
+                                    <li><a href="{{ url('noticia_new') }}">Crear noticia</a></li>
+                                    <li><a href="{{ url('jugador_new') }}">Crear jugador</a></li>
+                                    <li><a href="{{ url('entrenador_new') }}">Crear entrenador</a></li>
+                                    <li><a href="{{ url('equipo_new') }}">Crear equipo</a></li>
+                                    <li><a href="{{ url('noticia_index') }}">Lista de noticias</a></li>
+                                    <li><a href="{{ url('jugador_index') }}">Lista de jugadores</a></li>
+                                    <li><a href="{{ url('entrenador_index') }}">Lista de entrenadores</a></li>
+                                    <li><a href="{{ url('equipo_index') }}">Lista de equipos</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+            <!-- Final del header -->
+
+            <div class="fh5co-section-gray">
+            {% block body %}{% endblock %}
+            </div>
+
+        <footer>
+            <div id="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3 text-center">
+                            <p class="fh5co-social-icons">
+                                <a href="https://es-es.facebook.com/aucatarroja/"><i class="icon-facebook2"></i></a>
+                                <a href="https://twitter.com/aucatarroja?lang=es"><i class="icon-twitter2"></i></a>
+                            </p>
+                            <p>Copyright 2017 <a href="www.floridauniversitaria.es">C.F. Athletic Unión Catarroja</a>. Todos los derechos reservados. <br>Powered by Florida Universitaria</a>
+                            {% if is_granted("ROLE_ADMIN") %}
+                            <p>
+                            <b>Has iniciado sesión como:</b> {{app.user.username}}
+                            {%else%}
+                            <p><a href="{{ url('auc_login_admin') }}"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>Iniciar Sesión</a></p>
+                            {% endif %}
+                            {% if is_granted('ROLE_ADMIN') %}
+                            <p><a href="{{ url('auc_logout_admin') }}"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Cerrar sesión</a></p>
+                            {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+
+
+        </div>
+        <!-- END fh5co-page -->
+
+    </div>
+    <!-- END fh5co-wrapper -->
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <!-- jQuery Easing -->
+    <script src="{{ asset('js/jquery-easing.1.3.js') }}"></script>
+    <!-- Bootstrap -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <!-- Waypoints -->
+    <script src="{{asset('js/jquery.waypoints.min.js')}}"></script>
+
+    <script src="{{asset('js/sticky.js')}}"></script>
+
+    <!-- Stellar -->
+    <script src="{{asset('js/jquery.stellar.min.js')}}"></script>
+    <!-- Superfish -->
+    <script src="{{asset('js/hoverIntent.js')}}"></script>
+    <script src="{{asset('js/superfish.js')}}"></script>
+    <!-- Magnific Popup -->
+    <script src="{{asset('js/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{asset('js/magnific-popup-options.js')}}"></script>
+    <!-- Date Picker -->
+    <script src="{{asset('js/bootstrap-datepicker.min.js')}}"></script>
+    <!-- CS Select -->
+    <script src="{{asset('js/classie.js')}}"></script>
+    <script src="{{asset('js/selectFx.js')}}"></script>
+
+    <!-- Main JS -->
+    <script src="{{asset('js/main.js')}}"></script>
+
+
+</body>
+</html>

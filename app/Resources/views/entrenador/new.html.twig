@@ -1,0 +1,70 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+
+{{ form_start(form) }}
+
+<div class="container">
+
+  <div class="col-md-4 col-md-offset-4">
+    <div class="text-center">
+      <p>
+        <h1>Crear Entrenador</h1>
+      </p>
+    </div>
+    <div>
+      <P>
+        {{ form_errors(form.nombre) }}
+        {{ form_widget(form.nombre, {'attr': {'class': 'form-control','placeholder': 'Nombre'}}) }}
+      </p>
+    </div>
+    <div>
+      <P>
+        {{ form_errors(form.apellidos) }}
+        {{ form_widget(form.apellidos, {'attr': {'class': 'form-control','placeholder': 'Apellidos'}}) }}
+      </p>
+    </div>
+
+    <div>
+      <P>
+        {{ form_errors(form.titulaciones) }}
+        {{ form_widget(form.titulaciones, {'attr': {'class': 'form-control','placeholder': 'Titulaciones'}}) }}
+      </p>
+    </div>
+
+    <div>
+      <P>
+        {{ form_errors(form.telefono) }}
+        {{ form_widget(form.telefono, {'attr': {'class': 'form-control','placeholder': 'Telefono'}}) }}
+      </p>
+    </div>
+
+    <div>
+      <p>Elige equipo:</p>
+      <p>
+        {{ form_errors(form.equipo) }}
+        {{ form_widget(form.equipo, {'attr': {'class': 'form-control'}}) }}
+      </p>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div id="margenbot">
+      <div class="editarboton">
+        <input class="btn btn-success" type="submit" value="Crear" />
+      </div>
+
+        <div class="volverboton">
+        <a href="{{ url('entrenador_index') }}"><input class="btn btn-default" type="button" value="Volver" /></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      {{ form_end(form) }}
+
+
+      {% endblock %}

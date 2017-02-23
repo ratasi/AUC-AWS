@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div id="fh5co-tours">
+        <div class="container">
+            <div id="tablaQuienes" class="background">
+              <div id="dentroTabla">
+                  <div class="panel-heading" id="tituloEquipo"><h1>LISTA DE JUGADORES</h1></div><br>
+              </div>
+            </div>
+          </div>
+          <br>
+    <div class="panel panel-default">
+        <p><a id="insertar" href="{{ path('jugador_new') }}"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Insertar un nuevo jugador</a></p>
+        <table class="table">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Posicion</th>
+                <th>Acciones</th>
+            </tr>
+        {% for jugador in jugadores %}
+            <tr>
+                <td>{{ jugador.nombre }}</td>
+                <td>{{ jugador.apellidos }}</td>
+                <td>{{ jugador.posicion }}</td>
+                <td>
+                <a href="{{ path('jugador_edit', { 'id': jugador.id }) }}"><input class="btn btn-success btn-xs" type="button" value="Editar" /></a>
+                <!-- <a href="{{ path('jugador_delete', { 'id': jugador.id }) }}"><input class="btn btn-danger btn-xs" type="submit" value="Eliminar" /></a> -->
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+        </div>
+        </div>
+{% endblock %}

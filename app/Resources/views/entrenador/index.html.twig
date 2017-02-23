@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div id="fh5co-tours">
+        <div class="container">
+            <div id="tablaQuienes" class="background">
+              <div id="dentroTabla">
+                  <div class="panel-heading" id="tituloEquipo"><h1>LISTA DE ENTRENADORES</h1></div><br>
+              </div>
+            </div>
+          </div>
+          <br>
+
+    <div class="panel panel-default">
+        <p><a id="insertar" href="{{ path('entrenador_new') }}"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Insertar nuevo entrenador</a></p>
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Titulaciones</th>
+                <th>Telefono</th>
+                {% if is_granted("ROLE_ADMIN") %}
+                <th>Acciones</th>
+                {% endif %}
+            </tr>
+        {% for entrenador in entrenadores %}
+            <tr>
+                <td><a href="{{ path('entrenador_show', { 'id': entrenador.id }) }}">{{ entrenador.id }}</a></td>
+                <td>{{ entrenador.nombre }}</td>
+                <td>{{ entrenador.apellidos }}</td>
+                <td>{{ entrenador.titulaciones }}</td>
+                <td>{{ entrenador.telefono }}</td>
+                <td>
+                <a href="{{ path('entrenador_edit', { 'id': entrenador.id }) }}"><input class="btn btn-success btn-xs" type="button" value="Editar" /></a>
+                <!-- <a href="{{ path('entrenador_delete', { 'id': entrenador.id }) }}"><input class="btn btn-danger btn-xs" type="submit" value="Eliminar" /></a> -->
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+        </div>
+        </div>
+{% endblock %}

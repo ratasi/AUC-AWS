@@ -1,0 +1,24 @@
+entrenador_index:
+    path:     /
+    defaults: { _controller: "AUCBundle:Entrenador:index" }
+    methods:  GET
+
+entrenador_show:
+    path:     /{id}/show
+    defaults: { _controller: "AUCBundle:Entrenador:show" }
+    methods:  GET
+
+entrenador_new:
+    path:     /new
+    defaults: { _controller: "AUCBundle:Entrenador:new" }
+    methods:  [GET, POST]
+
+entrenador_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AUCBundle:Entrenador:edit" }
+    methods:  [GET, POST]
+
+entrenador_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AUCBundle:Entrenador:delete" }
+    methods:  [GET, POST, DELETE]

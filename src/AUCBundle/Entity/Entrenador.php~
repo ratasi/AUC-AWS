@@ -1,0 +1,211 @@
+<?php
+
+namespace AUCBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Entrenador
+ *
+ * @ORM\Table(name="entrenador")
+ * @ORM\Entity(repositoryClass="AUCBundle\Repository\EntrenadorRepository")
+ */
+class Entrenador
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=60)
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="apellidos", type="string", length=255)
+     */
+    private $apellidos;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titulaciones", type="string", length=255)
+     */
+    private $titulaciones;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefono", type="string", length=14)
+     */
+    private $telefono;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Equipo", inversedBy="entrenador")
+     * @ORM\JoinColumn(name="equipo_id", referencedColumnName="id")
+     */
+
+    private $equipo;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     *
+     * @return Entrenador
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set apellidos
+     *
+     * @param string $apellidos
+     *
+     * @return Entrenador
+     */
+    public function setApellidos($apellidos)
+    {
+        $this->apellidos = $apellidos;
+
+        return $this;
+    }
+
+    /**
+     * Get apellidos
+     *
+     * @return string
+     */
+    public function getApellidos()
+    {
+        return $this->apellidos;
+    }
+
+    /**
+     * Set titulaciones
+     *
+     * @param string $titulaciones
+     *
+     * @return Entrenador
+     */
+    public function setTitulaciones($titulaciones)
+    {
+        $this->titulaciones = $titulaciones;
+
+        return $this;
+    }
+
+    /**
+     * Get titulaciones
+     *
+     * @return string
+     */
+    public function getTitulaciones()
+    {
+        return $this->titulaciones;
+    }
+
+    /**
+     * Set telefono
+     *
+     * @param integer $telefono
+     *
+     * @return Entrenador
+     */
+    public function setTelefono($telefono)
+    {
+        $this->telefono = $telefono;
+
+        return $this;
+    }
+
+    /**
+     * Get telefono
+     *
+     * @return int
+     */
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->equipo = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add equipo
+     *
+     * @param \AUCBundle\Entity\Equipo $equipo
+     *
+     * @return Entrenador
+     */
+    public function addEquipo(\AUCBundle\Entity\Equipo $equipo)
+    {
+        $this->equipo[] = $equipo;
+
+        return $this;
+    }
+
+    /**
+     * Remove equipo
+     *
+     * @param \AUCBundle\Entity\Equipo $equipo
+     */
+    public function removeEquipo(\AUCBundle\Entity\Equipo $equipo)
+    {
+        $this->equipo->removeElement($equipo);
+    }
+
+    /**
+     * Get equipo
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEquipo()
+    {
+        return $this->equipo;
+    }
+
+    public function setEquipo()
+    {
+        return $this->equipo;
+    }
+}

@@ -1,0 +1,4 @@
+services:
+#    auc.example:
+#        class: AUCBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

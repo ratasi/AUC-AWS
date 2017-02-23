@@ -1,0 +1,153 @@
+
+<style type="text/css">
+    *{
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    #login {
+        padding-top: 50px
+    }
+    #login .form-wrap {
+        width: 30%;
+        margin: 0 auto;
+    }
+    #login h1 {
+        color: #004D7A;
+        font-size: 18px;
+        text-align: center;
+        font-weight: bold;
+        padding-bottom: 20px;
+    }
+    #login .form-group {
+        margin-bottom: 25px;
+    }
+    #login .checkbox {
+        margin-bottom: 20px;
+        position: relative;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+    }
+    #login .checkbox.show:before {
+        content: '\e013';
+        color: #1fa67b;
+        font-size: 17px;
+        margin: 1px 0 0 3px;
+        position: absolute;
+        pointer-events: none;
+    }
+    #login .checkbox .character-checkbox {
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        vertical-align: middle;
+        display: inline-block;
+    }
+    #login .checkbox .label {
+        color: #6d6d6d;
+        font-size: 13px;
+        font-weight: normal;
+    }
+    #login .btn.btn-custom {
+        background-color: #004D7A;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #login .forget {
+        font-size: 13px;
+        text-align: center;
+        display: block;
+    }
+
+/*    --------------------------------------------------
+    :: Inputs & Buttons
+    -------------------------------------------------- */
+    .form-control {
+        color: #212121;
+    }
+    .btn-custom {
+        color: #fff;
+        background-color: #1fa67b;
+    }
+    .btn-custom:hover,
+    .btn-custom:focus {
+        color: #fff;
+    }
+
+/*    --------------------------------------------------
+    :: Footer
+    -------------------------------------------------- */
+    #footer {
+        color: #6d6d6d;
+        font-size: 12px;
+        text-align: center;
+    }
+    #footer p {
+        margin-bottom: 0;
+    }
+    #footer a {
+        color: inherit;
+    }
+</style>
+
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+{{ form_start(form) }}
+
+<section id="login">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-wrap">
+                    <h1>Crear una cuenta de administrador</h1>
+                    <form>
+                    <div class="form-group">
+                        {{ form_errors(form.username) }}
+                        {{ form_widget(form.username, {'attr': {'class': 'form-control','placeholder': 'Nombre de usuario'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_errors(form.email) }}
+                        {{ form_widget(form.email, {'attr': {'class': 'form-control','placeholder': 'Email'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_errors(form.plainPassword.first) }}
+                        {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control','placeholder': 'Contraseña'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_errors(form.plainPassword.second) }}
+                        {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control','placeholder': 'Confirmar contraseña'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_widget(form.Registrar, {'attr': {'class': 'btn btn-custom btn-lg btn-block'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_widget(form.Borrar, {'attr': {'class': 'btn btn-custom btn-lg btn-block'}}) }}
+                        </form>
+                    </div>
+
+                    <p><a class="forget" href="{{url('auc_homepage')}}">Volver a inicio</a></p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p>Athletic Unión Catarroja © - 2017</p>
+            </div>
+        </div>
+    </div>
+</footer>
+    {{ form_end(form) }}

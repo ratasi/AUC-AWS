@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div id="fh5co-tours">
+        <div class="container">
+            <div id="tablaQuienes" class="background">
+              <div id="dentroTabla">
+                  <div class="panel-heading" id="tituloEquipo"><h1>LISTA DE NOTICIAS</h1></div><br>
+              </div>
+            </div>
+          </div>
+          <br>
+    <div class="panel panel-default">
+        <p><a id="insertar" href="{{ path('noticia_new') }}"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Insertar nueva noticia</a></p>
+        <table class="table">
+            <tr>
+                <th>Titulo</th>
+                <th>Subtitulo</th>
+                <th>Descripcion</th>
+                {% if is_granted("ROLE_ADMIN") %}
+                <th>Acciones</th>
+                {% endif %}
+            </tr>
+        {% for noticia in noticias %}
+            <tr>
+                <td>{{ noticia.titulo }}</td>
+                <td>{{ noticia.subtitulo }}</td>
+                <td>{{ noticia.descripcion }}</td>
+                <td>
+                <a href="{{ path('noticia_edit', { 'id': noticia.id }) }}"><input class="btn btn-success btn-xs" type="button" value="Editar" /></a>
+
+                <!-- <a href="{{ path('noticia_delete', { 'id': noticia.id }) }}"><input class="btn btn-danger btn-xs" type="submit" value="Eliminar" /></a> -->
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+        </div>
+        </div>
+{% endblock %}
