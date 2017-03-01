@@ -36,6 +36,10 @@ class DefaultController extends Controller
     {
         return $this->render('AUCBundle:Default:bienvenido.html.twig');
     }
+    public function exitoAction()
+    {
+        return $this->render('AUCBundle:Default:exito.html.twig');
+    }
 
     public function allAction()
     {

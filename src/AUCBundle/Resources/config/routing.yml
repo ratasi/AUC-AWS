@@ -39,7 +39,7 @@ auc_logout_admin:
 
 auc_contacto:
     path:     /contacto
-    defaults: { _controller: AUCBundle:Default:contacto }
+    defaults: { _controller: AUCBundle:Mail:contact }
 
 auc_quienes:
     path:     /nosotros
@@ -48,3 +48,7 @@ auc_quienes:
 auc_adaptado:
     path:     /futbol_adaptado
     defaults: { _controller: AUCBundle:Default:adaptado }
+
+auc_exito:
+    path:     /exito
+    defaults: { _controller: AUCBundle:Default:exito }
